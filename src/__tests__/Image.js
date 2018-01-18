@@ -5,17 +5,6 @@ import Bricks from '../Components/Bricks.js';
 import backside from '../Components/Images/backside.png';
 import empty from '../Components/Images/empty.png';
 
-// function flushAllPromises() {
-//     return new Promise(resolve => setImmediate(resolve));
-//   }
-  
-//   /**
-//    * Restore fetchMock after each test. Cleanup duty.
-//    */
-//   afterEach(() => {
-//     fetchMock.restore();
-//     fetchMock.reset();
-//   });
 
   it('change class onClick', () => {
     const wrapper = shallow(<Image />);

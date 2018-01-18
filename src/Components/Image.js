@@ -3,7 +3,6 @@ import backside from './Images/backside.png';
 import empty from './Images/empty.png';
 
 
-
 class Image extends Component {
   state = {
     imgUrl: backside
