@@ -23,7 +23,7 @@ class Image extends Component {
   onClick = e => {
     const imgUrl = this.state.images.filter(img => img.imgNr === this.state.imgNr ).map(img => img.img)
     this.setState({
-      imgUrl: imgUrl
+      imgUrl: imgUrl.toString()
     });
     this.props.checkBricks(e.target.id, this.state.imgNr);
   };
