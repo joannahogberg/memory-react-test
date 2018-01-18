@@ -55,5 +55,6 @@
         "plugins": [
             "transform-class-properties"
         ]
-    }
+    },
+    "homepage": "https://github.com/joannahogberg/memory-react-test"
 }
