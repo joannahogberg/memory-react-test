@@ -16,8 +16,6 @@ class App extends Component {
   };
   
   state = {
-    // gamesPlayed: null,
-    // totalPoints: null,
     gamesPlayed: this.props.gamesPlayed,
     totalPoints: this.props.totalPoints,
     options: optionValues,
@@ -25,24 +23,13 @@ class App extends Component {
     userMsg: ""
   };
 
-  // componentDidMount() {
-  //   const cachedPoints = localStorage.getItem("totalPoints");
-  //   const cachedGames = localStorage.getItem("gamesPlayed");
-
-  //   if (!cachedPoints) {
-  //     return;
-  //   }
-  //   this.setState({
-  //     totalPoints: Number(cachedPoints),
-  //     gamesPlayed: Number(cachedGames)
-  //   });
-  // }
 
   onChange = e => {
     this.setState({ value: e.target.value });
   };
 
   countStats = (points, start, end) => {
+    console.log(typeof(points))
     let gameTime = end - start;
     // strip the ms
     gameTime /= 1000;
@@ -54,19 +41,14 @@ class App extends Component {
       ", and you finished in " +
       time +
       " mins";
-    // const cachedPoints = localStorage.getItem("totalPoints");
-    // const cachedGames = localStorage.getItem("gamesPlayed");
 
     this.setState(
       {
-        // totalPoints: Number(cachedPoints) + points,
-        // gamesPlayed: Number(cachedGames) + 1,
         totalPoints: this.state.totalPoints + points,
         gamesPlayed: this.state.gamesPlayed + 1,
         userMsg
       },
       function() {
-        // this.storeStats(this.state.totalPoints, this.state.gamesPlayed);
         saveStatToLocalStorage(this.state.totalPoints, this.state.gamesPlayed);
       }
     );
@@ -76,25 +58,13 @@ clearStats=()=>{
   this.setState({ totalPoints:0, gamesPlayed:0 });
 
 }
-  // storeStats = (totalPoints, gamesPlayed) => {
-  //   localStorage.setItem("totalPoints", Number(JSON.stringify(totalPoints)));
-  //   localStorage.setItem("gamesPlayed", Number(JSON.stringify(gamesPlayed)));
-  // };
 
   render() {
-    console.log(this.state.gamesPlayed, this.props.totalPoints)
-    // const cachedPoints = localStorage.getItem("totalPoints");
-    // const cachedGames = localStorage.getItem("gamesPlayed");
-    // const avaragePoints = parseInt(Number(cachedPoints) / Number(cachedGames));
-
     const cachedPoints = this.state.totalPoints;
     const cachedGames = this.state.gamesPlayed;
-    const avaragePoints = parseInt(Number(cachedPoints) / Number(cachedGames));
-
-    const avrgPoints = this.state.gamesPlayed > 1 ? avaragePoints : "";
-    // localStorage.removeItem("totalPoints");
-    // localStorage.removeItem("gamesPlayed");
-
+    // const avaragePoints = parseInt(Number(cachedPoints) / Number(cachedGames));
+    const avaragePoints = cachedPoints /cachedGames;
+    const avrgPoints = this.state.gamesPlayed ? avaragePoints : "";
     //Set options for select to select nr of bricks to play with
     const options = this.state.options.map(name => {
       return (
@@ -103,8 +73,6 @@ clearStats=()=>{
         </option>
       );
     });
-
-
 
     return (
       <div className="App">
