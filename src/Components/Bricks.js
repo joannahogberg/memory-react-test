@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Image from './Image.js';
 // import backside from './Images/backside.png';
 
@@ -100,7 +100,7 @@ class Bricks extends Component {
    // console.log(this.state.turns, pairs);
     if (pairs === Number(this.props.nrOfBricks) / 2) {
       const endTime = new Date();
-      let points = parseInt(20 - (this.state.turns - pairs) * 1.2);
+      let points = parseInt(20 - (this.state.turns - pairs) * 1.2, 10);
       this.setState({ points, endTime }, function() {
         this.props.countStats(
           this.state.points,

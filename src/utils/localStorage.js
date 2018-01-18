@@ -8,7 +8,7 @@ export function saveStatToLocalStorage(totalPoints, gamesPlayed){
   export function getStatFromLocalStorage(){
     const totalPoints = localStorage.getItem('totalPoints');
     const gamesPlayed = localStorage.getItem('gamesPlayed');
-    return {totalPoints: parseInt(totalPoints), gamesPlayed: parseInt(totalPoints)};
+    return {totalPoints: parseInt(totalPoints, 10), gamesPlayed: parseInt(gamesPlayed, 10)};
   }
   
   export function removeStatFromLocalStorage(){
