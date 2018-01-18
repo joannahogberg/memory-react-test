@@ -28,14 +28,5 @@
             "!src/setupTests.js"
         ]
     },
-    "babel": {
-        "presets": [
-            "es2015",
-            "react"
-        ],
-        "plugins": [
-            "transform-class-properties"
-        ]
-    },
     "homepage": "https://joannahogberg.github.io/memory-react-test"
 }
