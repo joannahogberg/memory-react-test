@@ -1,5 +1,5 @@
 import React from 'react';
-import fetchMock from 'fetch-mock';
+// import fetchMock from 'fetch-mock';
 import { shallow, mount, render } from 'enzyme';
 import Image from '../Components/Image.js';
 import Bricks from '../Components/Bricks.js';

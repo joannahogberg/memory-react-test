@@ -1,23 +1,23 @@
-require('jest-localstorage-mock');
+// require('jest-localstorage-mock');
 import React from 'react';
-import fetchMock from 'fetch-mock';
+// import fetchMock from 'fetch-mock';
 import { shallow, mount, render } from 'enzyme';
 import App from '../Components/App.js';
 import optionValues from '../optionValues.js';
 
 
 
-function flushAllPromises() {
-  return new Promise(resolve => setImmediate(resolve));
-}
+// function flushAllPromises() {
+//   return new Promise(resolve => setImmediate(resolve));
+// }
 
-/**
- * Restore fetchMock after each test. Cleanup duty.
- */
-afterEach(() => {
-  fetchMock.restore();
-  fetchMock.reset();
-});
+// /**
+//  * Restore fetchMock after each test. Cleanup duty.
+//  */
+// afterEach(() => {
+//   fetchMock.restore();
+//   fetchMock.reset();
+// });
 
 it("renders without crashing", () => {
   shallow(<App />);
