@@ -13,8 +13,7 @@ it("should get the statistic values from localStorage", () => {
 //   let stats = { totalPoints: '24', gamesPlayed: '2' };
   const val1= 24;
   const val2 = 2;
-//   localStorage.setItem("gamesPlayed", JSON.stringify(val1));
-//   localStorage.setItem("totalPoints", JSON.stringify(2));
+  
 localStorage.setItem("totalPoints", 24);
   localStorage.setItem("gamesPlayed", 2);
 
