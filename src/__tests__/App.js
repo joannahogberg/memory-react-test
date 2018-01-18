@@ -1,4 +1,3 @@
-// require('jest-localstorage-mock');
 import React from 'react';
 // import fetchMock from 'fetch-mock';
 import { shallow, mount, render } from 'enzyme';
