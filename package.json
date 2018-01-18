@@ -1,6 +1,6 @@
 {
     "name": "pattis-memory-game",
-    "version": "0.1.0",
+    "version": "1.0.2",
     "private": true,
     "dependencies": {
         "fetch-mock": "^6.0.0-beta.7",
@@ -12,8 +12,10 @@
         "react-scripts": "1.0.17"
     },
     "scripts": {
+        "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+        "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
         "start": "react-scripts start",
-        "build": "react-scripts build",
+        "build": "npm run build-css && react-scripts build",
         "test": "jest",
         "test:watch": "jest --watchAll",
         "test:coverage": "jest --coverage",
