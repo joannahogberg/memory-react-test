@@ -1,10 +1,16 @@
 language: node_js
 node_js:
 - 8
+cache:
+  directories:
+    - node_modules
+  yarn: true
 script:
 # - npm test
-- npm build
-- npm test -- --coverage && cat ./coverage/lcov.info | coveralls
+# - npm build
+# - npm test -- --coverage && cat ./coverage/lcov.info | coveralls
+- yarn build
+- yarn test --coverage && cat ./coverage/lcov.info | coveralls
 
 deploy:
   provider: pages
