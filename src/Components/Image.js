@@ -62,10 +62,11 @@ class Image extends Component {
   onClick = e => {
     // const imgUrl = this.state.images.filter(img => img.imgNr === this.state.imgNr ).map(img => img.img)
     // imgUrl = imgUrl.toString()
-    // console.log(typeof(imgUrl.toString()))
+   // console.log(typeof(imgUrl.toString()))
     this.setState({
-    //  imgUrl: imgUrl.toString()
-    imgUrl: process.env.PUBLIC_URL + "./Images/_" + this.state.imgNr + ".png"
+     //imgUrl: imgUrl.toString()
+    // imgUrl: process.env.PUBLIC_URL + "./Images/_" + this.state.imgNr + ".png"
+    imgUrl:require(`./Images/_${this.state.imgNr}.png`)
    
     });
     this.props.checkBricks(e.target.id, this.state.imgNr);
