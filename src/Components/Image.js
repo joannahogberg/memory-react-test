@@ -62,7 +62,7 @@ class Image extends Component {
   onClick = e => {
     const imgUrl = this.state.images.filter(img => img.imgNr === this.state.imgNr ).map(img => img.img)
     // imgUrl = imgUrl.toString()
-    console.log(imgUrl)
+    console.log(typeof(imgUrl.toString()))
     this.setState({
      imgUrl: imgUrl.toString()
    
@@ -79,7 +79,7 @@ class Image extends Component {
   };
     return (
       <img
-        src={!this.props.flipped ? backside : imgUrl}
+        src={!this.props.flipped ? backside : process.env.PUBLIC_URL + imgUrl}
         className={this.props.pair ? "brickFront" : className}
         alt="backside"
         id={this.props.id}
