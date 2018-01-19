@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import backside from './Images/backside.png';
 import empty from './Images/empty.png';
-// import imgNumbers from './Images/imgNumbers.js';
+import imgNumbers from './Images/imgNumbers.js';
 // import _0 from './Images/_0.png';
 // import _1 from './Images/_1.png';
 // import _2 from './Images/_2.png';
@@ -34,9 +34,9 @@ class Image extends Component {
   state = {
     imgUrl: backside,
     imgNr: this.props.value,
-    // images: imgNumbers
+    images: imgNumbers
   //   images: [
-  //     { imgNr: 0, img: _0 },
+  //     { imgNr: 0, img: require(`./Images/_0.png`)},
   //     { imgNr: 1, img: _1 },
   //     { imgNr: 2, img: _2 },
   //     { imgNr: 3, img: _3 },
@@ -60,13 +60,13 @@ class Image extends Component {
   };
 
   onClick = e => {
-    // const imgUrl = this.state.images.filter(img => img.imgNr === this.state.imgNr ).map(img => img.img)
-    // imgUrl = imgUrl.toString()
+    let imgUrl = this.state.images.filter(img => img.imgNr === this.state.imgNr ).map(img => img.img)
+    imgUrl = imgUrl.toString()
    // console.log(typeof(imgUrl.toString()))
     this.setState({
-     //imgUrl: imgUrl.toString()
-    // imgUrl: process.env.PUBLIC_URL + "./Images/_" + this.state.imgNr + ".png"
-    imgUrl:require(`./Images/_${this.state.imgNr}.png`)
+     imgUrl: imgUrl.toString()
+    //  imgUrl: process.env.PUBLIC_URL + "/Images/_" + this.state.imgNr + ".png"
+   
    
     });
     this.props.checkBricks(e.target.id, this.state.imgNr);
