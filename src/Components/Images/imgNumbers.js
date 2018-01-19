@@ -16,6 +16,7 @@
 // import _15 from './Images/_15.png';
 // import _16 from './Images/_16.png';
 // import _17 from './Images/_17.png';
+// import React from 'react';
 import _0 from './_0.png';
 import _1 from './_1.png';
 import _2 from './_2.png';
