@@ -1,9 +1,32 @@
-import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-import Image from './Image.js';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Image from "./Image.js";
+import Button from "./FormElements/Button.js";
 // import backside from './Images/backside.png';
 
+const buttonStyle = `sbg-transparent 
+hover:bg-green-light 
+text-green-light 
+font-semibold 
+hover:text-white 
+py-2 px-4 
+border 
+border-green 
+hover:border-transparent 
+rounded
+`;
+const disabledButtonStyle = `
+opacity-50  
+pointer-events-none 
+  ${buttonStyle}
+`;
+
 class Bricks extends Component {
+  static propTypes = {
+    nrOfBricks: PropTypes.number,
+    countPoints: PropTypes.func,
+    countStats: PropTypes.func
+  };
   state = {
     bricksArr: [],
     startTime: 0,
@@ -13,7 +36,8 @@ class Bricks extends Component {
     pairs: 0,
     points: 0,
     flipped: false,
-    turns: 0
+    turns: 0,
+    disabled: this.props.disabled
   };
 
   onClick = bricks => {
@@ -30,13 +54,14 @@ class Bricks extends Component {
       Object.assign({ value: brick[1], flipped: false, pair: false })
     );
 
-    const startTime = new Date();
+    const startTime = new Date().getTime();
     this.setState({
       bricksArr,
       points: 0,
       pairs: 0,
-      turns:0,
-      startTime
+      turns: 0,
+      startTime,
+      disabled: true
     });
   };
 
@@ -48,7 +73,6 @@ class Bricks extends Component {
     } else if (this.state.brick1 !== null) {
       let bricksArr = this.state.bricksArr;
       bricksArr[id].flipped = true;
-
       this.setState(
         { brick2: value, bricksArr, turns: this.state.turns + 1 },
         function() {
@@ -59,9 +83,7 @@ class Bricks extends Component {
   };
 
   checkPair = () => {
-
     if (this.state.brick1 === this.state.brick2) {
-      //console.log("pair");
       const bricksArr = this.state.bricksArr.map(brick => {
         if (brick.value === this.state.brick2) {
           return { ...brick, pair: true, flipped: true };
@@ -97,9 +119,8 @@ class Bricks extends Component {
   };
 
   countPoints = pairs => {
-   // console.log(this.state.turns, pairs);
     if (pairs === Number(this.props.nrOfBricks) / 2) {
-      const endTime = new Date();
+      const endTime = new Date().getTime();
       let points = parseInt(20 - (this.state.turns - pairs) * 1.2, 10);
       this.setState({ points, endTime }, function() {
         this.props.countStats(
@@ -109,12 +130,11 @@ class Bricks extends Component {
         );
       });
       this.endRound();
-     
     }
   };
 
   endRound = () => {
-    this.setState({ bricksArr: [] });
+    this.setState({ bricksArr: [],  disabled: false });
   };
 
   renderBricks = bricks => {
@@ -127,27 +147,34 @@ class Bricks extends Component {
           flipped={brick.flipped}
           pair={brick.pair}
           checkBricks={this.checkBricks}
+          nrOfBricks={this.props.nrOfBricks}
         />
       );
     });
   };
   render() {
-    const divStyle = {
-      maxWidth: '750px',
-      margin: "0 auto"
-  };
- 
-    const imgTags =
-      this.props.nrOfBricks > 0 ? (
-        <div>{this.renderBricks(this.state.bricksArr)}</div>
-      ) : (
-        <p>Select number of bricks and start playing</p>
-      );
+    console.log(this.state.startTime);
+    const wrapperWidth =
+      this.props.nrOfBricks > 23
+        ? "w-screen max-w-xl p-2"
+        : "w-screen max-w-md p-2";
+
+    const imgTags = 
+      this.state.bricksArr.length === this.props.nrOfBricks
+        ? this.renderBricks(this.state.bricksArr)
+        : "";
 
     return (
-      <div className="d-flex justify-content-center header" style={divStyle}>
-        <button onClick={this.onClick}>start game</button>
-        {imgTags}
+      <div className="flex flex-wrap justify-center">
+        <div className="flex w-full mb-2 justify-center">
+          <Button
+            onClick={this.onClick}
+            // className="sbg-transparent hover:bg-green-light text-green-light font-semibold hover:text-white py-2 px-4 border border-green hover:border-transparent rounded"
+            className={`${this.state.disabled ? disabledButtonStyle : buttonStyle}`}
+            title="START GAME"
+          />
+        </div>
+        <div className={wrapperWidth}>{imgTags}</div>
       </div>
     );
   }
