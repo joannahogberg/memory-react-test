@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main snap 1`] = `
+<main
+  class="flex flex-col justify-center items-center w-full mx-auto font-sans text-indigo-darker mt-6"
+>
+  
+</main>
+`;

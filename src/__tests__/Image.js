@@ -40,3 +40,16 @@ import empty from '../Components/Images/empty.png';
    
   })
 
+  it('Test if right class is being added depending of nrOfBricks value', () => {
+    const fakeCall = jest.fn();
+    const wrapper = shallow(<Image nrOfBricks={20} checkBricks={fakeCall} />);
+    expect(wrapper.props().className).toContain('w-1/5')
+  })
+
+  it('Test if right class is being added depending of nrOfBricks value', () => {
+    const fakeCall = jest.fn();
+    const wrapper = shallow(<Image nrOfBricks={24} checkBricks={fakeCall} />);
+    expect(wrapper.props().className).toContain('w-1/6')
+   
+  })
+

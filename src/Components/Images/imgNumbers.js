@@ -29,7 +29,7 @@ import _8 from './_8.png';
 import _9 from './_9.png';
 import _10 from './_10.png';
 import _11 from './_11.png';
-import _12 from './/_12.png';
+import _12 from './_12.png';
 import _13 from './_13.png';
 import _14 from './_14.png';
 import _15 from './_15.png';

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Main from "./FormElements/Main.js";
 import Header from "./FormElements/Header.js";
 import Row from "./FormElements/Row.js";
-import Select from "./Select.js";
+import Select from "./FormElements/Select.js";
 import Bricks from "./Bricks.js";
 import optionValues from "../optionValues.js";
 
@@ -28,17 +28,21 @@ class App extends Component {
   };
 
   onChange = e => {
-    this.setState({ value: e.target.value, userMsg: "", disabled: true });
+    this.setState({ value: e.target.value, userMsg: "" });
   };
+
+  disableSelect= ()=>{
+    this.setState({disabled: true, userMsg: ""});
+
+  }
 
   countStats = (points, start, end) => {
     const gameTime = end - start;
     const minutes = Math.floor(gameTime / 60000);
     const seconds = ((gameTime % 60000) / 1000).toFixed(0);
-    const time =
-      seconds === 60
-        ? minutes + 1 + ":00"
-        : minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+    //const time = (seconds === 60 ? (minutes+1) + ":00" : minutes + ":" + seconds);
+    // const time = minutes + ":" + seconds;
+    const time = (Number(seconds) === 60 ? (minutes+1) + ":00" : minutes + ":" + (Number(seconds) < 10 ? "0" : "") + seconds);
     const userMsg =
       "your score for this round is " +
       points +
@@ -59,7 +63,7 @@ class App extends Component {
   };
   clearStats = () => {
     removeStatFromLocalStorage();
-    this.setState({ totalPoints: 0, gamesPlayed: 0 });
+    this.setState({ totalPoints: 0, gamesPlayed: 0, userMsg: "" });
   };
 
   render() {
@@ -88,7 +92,7 @@ class App extends Component {
           <Row>
             <Select
               onChange={this.onChange}
-            disabled={this.state.disabled}
+              disabled={this.state.disabled}
               options={options}
             >
               <option value="0">Select nr of bricks</option>
@@ -101,6 +105,7 @@ class App extends Component {
             nrOfBricks={Number(this.state.value)}
             countStats={this.countStats}
             disabled={this.state.disabled}
+            disableSelect={this.disableSelect}
           />
         </Main>
       </div>

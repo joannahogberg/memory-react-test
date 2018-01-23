@@ -5,6 +5,7 @@
     "dependencies": {
         "enzyme": "3.2.0",
         "enzyme-adapter-react-16": "1.1.1",
+        "enzyme-to-json": "3.3.0",
         "gh-pages": "^1.1.0",
         "prop-types": "15.6.0",
         "react": "^16.2.0",
@@ -19,18 +20,31 @@
         "build": "react-scripts build",
         "test": "react-scripts test --env=jsdom",
         "test:coverage": "npm test -- --coverage",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "cypress:open": "cypress open"
     },
     "devDependencies": {
-        "coveralls": "^3.0.0"
+        "coveralls": "^3.0.0",
+        "cypress": "^1.4.1"
     },
     "jest": {
+        "snapshotSerializers": [
+            "enzyme-to-json/serializer"
+        ],
         "collectCoverageFrom": [
             "src/*/*.js",
             "!src/index.js",
             "!src/registerServiceWorker.js",
             "!src/setupTests.js"
-        ]
+        ],
+        "coverageThreshold": {
+            "global": {
+                "branches": 80,
+                "functions": 80,
+                "lines": 80,
+                "statements": -10
+            }
+        }
     },
     "homepage": "https://joannahogberg.github.io/memory-react-test"
 }

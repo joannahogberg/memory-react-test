@@ -3,17 +3,12 @@ import { shallow, mount, render } from 'enzyme';
 import Image from '../Components/Image.js';
 import Bricks from '../Components/Bricks.js';
 
+//Instructs Jest to use fake versions of the standard timer functions
 jest.useFakeTimers();
 
-// let onActionMock = jest.fn();
-
-
-// beforeEach(function() {
-//   onActionMock.mockClear();
-// });
-
 it('Generate image tags when button is being clicked', () => {
-    const wrapper = mount(<Bricks nrOfBricks={16} />);
+    const fakeCall = jest.fn();
+    const wrapper = mount(<Bricks nrOfBricks={16} disableSelect={fakeCall}/>);
     const btn = wrapper.find('button'); 
     expect(wrapper.state().bricksArr).toHaveLength(0)
     btn.simulate("click");
@@ -24,9 +19,17 @@ it('Generate image tags when button is being clicked', () => {
     expect(imgTags).toHaveLength(16)
  
   })
+  it('Check so that function returns falsy if nrOfBricks is set to 0', () => {
+    const fakeCall = jest.fn();
+    const wrapper = mount(<Bricks nrOfBricks={0} disableSelect={fakeCall}/>);
+    const btn = wrapper.find('button'); 
+    btn.simulate("click");
+    expect(wrapper.state().bricksArr).toHaveLength(0)
+  })
 
   it('When enRound is called bricksArr should be empty', () => {
-    const wrapper = mount(<Bricks nrOfBricks={16} />);
+    const fakeCall = jest.fn();
+    const wrapper = mount(<Bricks nrOfBricks={16} disableSelect={fakeCall}/>);
     const btn = wrapper.find('button'); 
     btn.simulate("click");
     expect(wrapper.state().bricksArr).toHaveLength(16)
@@ -37,7 +40,7 @@ it('Generate image tags when button is being clicked', () => {
 
   it('Call countPoints to check points for round', () => {
     const fakeCall = jest.fn();
-    const wrapper = mount(<Bricks nrOfBricks={16} countStats={fakeCall} />);
+    const wrapper = mount(<Bricks nrOfBricks={16} countStats={fakeCall} disableSelect={fakeCall} />);
     const btn = wrapper.find('button'); 
     btn.simulate("click");
     wrapper.setState({ turns: 22});
@@ -49,7 +52,8 @@ it('Generate image tags when button is being clicked', () => {
   })
 
   it('Call checkPair and see if state is being updated when images dont match', () => {
-    const wrapper = mount(<Bricks nrOfBricks={16} />);
+    const fakeCall = jest.fn();
+    const wrapper = mount(<Bricks nrOfBricks={16} disableSelect={fakeCall}/>);
     const btn = wrapper.find('button'); 
     btn.simulate("click");
     wrapper.setState({ brick1: 1});
@@ -67,7 +71,8 @@ it('Generate image tags when button is being clicked', () => {
 
 
   it('Call checkPair and see if state is being updated', () => {
-    const wrapper = mount(<Bricks nrOfBricks={16} />);
+    const fakeCall = jest.fn();
+    const wrapper = mount(<Bricks nrOfBricks={16} disableSelect={fakeCall}/>);
     const btn = wrapper.find('button'); 
     btn.simulate("click");
     const bricksArr = wrapper.state().bricksArr;
@@ -87,8 +92,6 @@ it('Generate image tags when button is being clicked', () => {
       }
     );
     expect(wrapper.state().bricksArr).toEqual(bricks)
-    // expect(bricks[0].pair).toBeTruthy()
-    // expect(bricks[1].pair).toBeTruthy()
     expect(wrapper.state().pairs).toEqual(1)
     wrapper.setState({ brick1: 1});
     wrapper.setState({ brick2: 3}); 
@@ -104,8 +107,9 @@ it('Generate image tags when button is being clicked', () => {
     expect(wrapper.state().bricksArr).toEqual(bricksUpdate)
   })
 
-  it('Call ccheckBricks and see if state is being updated and checkPair is being called', () => {
-    const wrapper = mount(<Bricks nrOfBricks={16} />);
+  it('Call ccheckBricks and see if state is being updated and spy to see if checkPair is being called', () => {
+    const fakeCall = jest.fn();
+    const wrapper = mount(<Bricks nrOfBricks={16} disableSelect={fakeCall}/>);
     const btn = wrapper.find('button'); 
     btn.simulate("click");
     const bricksArr = wrapper.state().bricksArr;
@@ -122,16 +126,7 @@ it('Generate image tags when button is being clicked', () => {
     expect(spy).toHaveBeenCalled()
   })
 
-  // it('Check if  ', () => {
-  //   const wrapper = mount(<Bricks nrOfBricks={16} />);
-  //   const btn = wrapper.find('button'); 
-  //   btn.simulate("click");
-  //   wrapper.setState({ brick1: 1});
-  //   const instance = wrapper.instance()
-  //   const spy = jest.spyOn(instance, 'checkPair')
-  //   wrapper.instance().checkBricks(1, 4)
-  //   expect(spy).toHaveBeenCalled()
-  // })
+
 
 
 

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Image from "./Image.js";
 import Button from "./FormElements/Button.js";
-// import backside from './Images/backside.png';
 
 const buttonStyle = `sbg-transparent 
 hover:bg-green-light 
@@ -25,7 +24,9 @@ class Bricks extends Component {
   static propTypes = {
     nrOfBricks: PropTypes.number,
     countPoints: PropTypes.func,
-    countStats: PropTypes.func
+    countStats: PropTypes.func,
+    disableSelect: PropTypes.func,
+    disabled: PropTypes.bool
   };
   state = {
     bricksArr: [],
@@ -40,7 +41,11 @@ class Bricks extends Component {
     disabled: this.props.disabled
   };
 
-  onClick = bricks => {
+  onClick = () => {
+    if(this.props.nrOfBricks === 0){
+      return
+    }
+
     let bricksArr = [];
     for (var i = 0; i < this.props.nrOfBricks; i++) {
       bricksArr.push(i);
@@ -62,7 +67,11 @@ class Bricks extends Component {
       turns: 0,
       startTime,
       disabled: true
-    });
+    },
+    function() {
+      this.props.disableSelect();
+    }
+  );
   };
 
   checkBricks = (id, value) => {
@@ -70,7 +79,8 @@ class Bricks extends Component {
       let bricksArr = this.state.bricksArr;
       bricksArr[id].flipped = true;
       this.setState({ brick1: value, bricksArr });
-    } else if (this.state.brick1 !== null) {
+    // } else if (this.state.brick1 !== null) {
+    } else {
       let bricksArr = this.state.bricksArr;
       bricksArr[id].flipped = true;
       this.setState(
@@ -104,7 +114,8 @@ class Bricks extends Component {
           }
         );
       }, 600);
-    } else if (this.state.brick1 !== this.state.brick2) {
+    // } else if (this.state.brick1 !== this.state.brick2) {
+    } else {
       const bricksArr = this.state.bricksArr.map(brick => {
         if (brick.pair === true) {
           return { ...brick, flipped: true };
@@ -153,7 +164,7 @@ class Bricks extends Component {
     });
   };
   render() {
-    console.log(this.state.startTime);
+    
     const wrapperWidth =
       this.props.nrOfBricks > 23
         ? "w-screen max-w-xl p-2"
@@ -169,7 +180,6 @@ class Bricks extends Component {
         <div className="flex w-full mb-2 justify-center">
           <Button
             onClick={this.onClick}
-            // className="sbg-transparent hover:bg-green-light text-green-light font-semibold hover:text-white py-2 px-4 border border-green hover:border-transparent rounded"
             className={`${this.state.disabled ? disabledButtonStyle : buttonStyle}`}
             title="START GAME"
           />

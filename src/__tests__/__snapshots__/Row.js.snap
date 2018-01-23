@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Row snap 1`] = `
+<div
+  class="flex w-full justify-center"
+>
+  
+</div>
+`;
