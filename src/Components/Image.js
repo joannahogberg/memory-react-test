@@ -31,7 +31,6 @@ class Image extends Component {
   };
 
   render() {
-    console.log(typeof(this.state.imgUrl), this.state.imgUrl)
     const small = this.props.nrOfBricks > 19 ? "w-1/5" : "w-1/4";
     const width = this.props.nrOfBricks > 23 ? "w-1/6" : small;
     const imgUrl = this.props.pair ? empty : this.state.imgUrl;
