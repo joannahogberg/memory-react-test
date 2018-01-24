@@ -49,9 +49,16 @@ class App extends Component {
       ", and you finished in " +
       time +
       " mins";
+    let pointsForThisRound;
+    if(points < 0 ){
+      pointsForThisRound = 0;
+    }
+    else{
+      pointsForThisRound = points;
+    }
     this.setState(
       {
-        totalPoints: this.state.totalPoints + points,
+        totalPoints: this.state.totalPoints + pointsForThisRound,
         gamesPlayed: this.state.gamesPlayed + 1,
         userMsg,
         disabled: false

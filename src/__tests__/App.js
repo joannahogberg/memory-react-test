@@ -56,8 +56,8 @@ describe('Call function countStats with different values', () => {
   });
   
   it("Call function with values to check when seconds === 60", () => {
-    const wrapper = mount(<App gamesPlayed={1} totalPoints={10}/>);
-    const points = 16;
+    const wrapper = mount(<App gamesPlayed={0} totalPoints={0}/>);
+    const points = -5;
     const start = 1515349879101;
     const end = 1515350179001;
     wrapper.instance().countStats(points, start, end)
@@ -66,6 +66,8 @@ describe('Call function countStats with different values', () => {
     const seconds = ((gameTime % 60000) / 1000).toFixed(0);
     const time = (Number(seconds) === 60 ? (minutes+1) + ":00" : minutes + ":" + (Number(seconds) < 10 ? "0" : "") + seconds);
     expect(wrapper.state().userMsg).toContain(time)
+    expect(wrapper.state().totalPoints).toEqual(0)
+    expect(wrapper.state().gamesPlayed).toEqual(1)
   });
   
   it("Call function with values to check when seconds > 10", () => {

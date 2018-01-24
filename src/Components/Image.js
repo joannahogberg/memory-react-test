@@ -26,12 +26,12 @@ class Image extends Component {
     imgUrl = imgUrl.toString();
     this.setState({
       imgUrl: imgUrl.toString()
-      //  imgUrl: process.env.PUBLIC_URL + "/Images/_" + this.state.imgNr + ".png"
     });
     this.props.checkBricks(e.target.id, this.state.imgNr);
   };
 
   render() {
+    console.log(typeof(this.state.imgUrl), this.state.imgUrl)
     const small = this.props.nrOfBricks > 19 ? "w-1/5" : "w-1/4";
     const width = this.props.nrOfBricks > 23 ? "w-1/6" : small;
     const imgUrl = this.props.pair ? empty : this.state.imgUrl;
