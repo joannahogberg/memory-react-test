@@ -43,16 +43,5 @@ describe("My First Test", function() {
             .not('src', 'backside.png')
             .should('have.class', 'pointer-events-none')
 
-        // cy.get('div').last()
-        //     .children()
-        //     .each(($el, index, $images) => {
-        //         // cy.wrap($el).click()
-        //         if ($el.context.className === "pointer-events-none p-px w-1/4" && $el.context.currentSrc === $el.context.currentSrc) {
-        //             // console.log("pair")
-        //             console.log($el.context.currentSrc)
-        //         }
-
-        //     })
-
     })
 });
