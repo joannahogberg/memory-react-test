@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header snap 1`] = `
+<header
+  class="flex flex-wrap"
+>
+  <div
+    class="flex w-full justify-center"
+  >
+    <h1
+      class="text-center font-black"
+    >
+      Memory Game
+    </h1>
+  </div>
+  <div
+    class="flex w-full justify-center"
+  >
+    <h4
+      class="text-grey-darker m-2"
+    >
+      You have no saved statics
+    </h4>
+  </div>
+</header>
+`;

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import backside from "./Images/backside.png";
-import empty from "./Images/empty.png";
-import imgNumbers from "./Images/imgNumbers.js";
+import backside from "../Images/backside.png";
+import empty from "../Images/empty.png";
+import imgNumbers from "../utils/imgNumbers.js";
 
 class Image extends Component {
   static propTypes = {

@@ -27,7 +27,7 @@ it('Generate image tags when button is being clicked', () => {
     expect(wrapper.state().bricksArr).toHaveLength(0)
   })
 
-  it('When enRound is called bricksArr should be empty', () => {
+  it('When endRound is called bricksArr should be empty', () => {
     const fakeCall = jest.fn();
     const wrapper = mount(<Bricks nrOfBricks={16} disableSelect={fakeCall}/>);
     const btn = wrapper.find('button'); 

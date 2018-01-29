@@ -2,54 +2,60 @@ import React from 'react';
 import { shallow, mount} from 'enzyme';
 import Image from '../Components/Image.js';
 import Bricks from '../Components/Bricks.js';
-import backside from '../Components/Images/backside.png';
-import empty from '../Components/Images/empty.png';
+import backside from '../Images/backside.png';
+import empty from '../Images/empty.png';
 
 
-  it('check className for img tag', () => {
-    const wrapper = shallow(<Image />);
-    expect(wrapper.hasClass('pointer-events-auto')).toEqual(true);  
-  })
-  it('check that length of images array is 18', () => {
-    const wrapper = mount(<Image />).instance();
-    expect(wrapper.state.images).toHaveLength(18)
-  })
+it("Make sure element is being rendered", () => {
+  const wrapper = shallow(<Image />);
+  expect(wrapper.exists()).toBe(true);
+});
 
-  it('check if function is being called on click', () => {
-    const fakeCall = jest.fn();
-    const wrapper = mount(<Image value={6} flipped={true} checkBricks={fakeCall} />);
-    wrapper.simulate('click', {target: {id: 6}})
-    expect(wrapper.state().imgNr).toBe(6)
-    expect(wrapper.props().checkBricks).toHaveBeenCalled()
-    
-  })
+it("check className for img tag", () => {
+  const wrapper = shallow(<Image />);
+  expect(wrapper.hasClass("pointer-events-auto")).toEqual(true);
+});
+it("check the length of images array is 18", () => {
+  const wrapper = mount(<Image />).instance();
+  expect(wrapper.state.images).toHaveLength(18);
+});
 
-  it('change image src onClick', () => {
-    const fakeCall = jest.fn();
-    const wrapper = shallow(<Image value={6} flipped={true} checkBricks={fakeCall} />);
-    expect(wrapper.props().src).toBe('backside.png')
-    wrapper.simulate('click', {target: {id: 6}})
-    expect(wrapper.props().src).toBe('_6.png')
-   
-  })
+describe("Test onClick for element", () => {
+  const fakeCall = jest.fn();
+  it("check if function is being called on click", () => {
+    const wrapper = mount(
+      <Image value={6} flipped={true} checkBricks={fakeCall} />
+    );
+    wrapper.simulate("click", { target: { id: 6 } });
+    expect(wrapper.state().imgNr).toBe(6);
+    expect(wrapper.props().checkBricks).toHaveBeenCalled();
+  });
 
-  it('If pair is true set img src to empty.png and className to be brickFront', () => {
-    const wrapper = shallow(<Image pair={true} flipped={true} />);
-    expect(wrapper.props().src).toBe('empty.png')
-    expect(wrapper.props().className).toContain('pointer-events-none')
-   
-  })
+  it("change image src onClick", () => {
+    const wrapper = shallow(
+      <Image value={6} flipped={true} checkBricks={fakeCall} />
+    );
+    expect(wrapper.props().src).toBe("backside.png");
+    wrapper.simulate("click", { target: { id: 6 } });
+    expect(wrapper.props().src).toBe("_6.png");
+  });
 
-  it('Test if right class is being added depending of nrOfBricks value', () => {
-    const fakeCall = jest.fn();
+  it("Test if right class is being added depending of nrOfBricks value", () => {
     const wrapper = shallow(<Image nrOfBricks={20} checkBricks={fakeCall} />);
-    expect(wrapper.props().className).toContain('w-1/5')
-  })
+    expect(wrapper.props().className).toContain("w-1/5");
+  });
 
-  it('Test if right class is being added depending of nrOfBricks value', () => {
-    const fakeCall = jest.fn();
+  it("Test if right class is being added depending of nrOfBricks value", () => {
     const wrapper = shallow(<Image nrOfBricks={24} checkBricks={fakeCall} />);
-    expect(wrapper.props().className).toContain('w-1/6')
-   
-  })
+    expect(wrapper.props().className).toContain("w-1/6");
+  });
+});
+
+it("If pair is true set img src to empty.png and className to be brickFront", () => {
+  const wrapper = shallow(<Image pair={true} flipped={true} />);
+  expect(wrapper.props().src).toBe("empty.png");
+  expect(wrapper.props().className).toContain("pointer-events-none");
+});
+
+
 
