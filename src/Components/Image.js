@@ -23,10 +23,10 @@ class Image extends Component {
     let imgUrl = this.state.images
       .filter(img => img.imgNr === this.state.imgNr)
       .map(img => img.img);
-    // imgUrl = imgUrl.toString();
+  
     this.setState({
-      // imgUrl: imgUrl.toString()
-      imgUrl: process.env.PUBLIC_URL + '/Images/'+ imgUrl +'.png'
+      imgUrl: imgUrl.toString()
+      
     });
     this.props.checkBricks(e.target.id, this.state.imgNr);
   };
