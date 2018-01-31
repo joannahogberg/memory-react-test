@@ -1,11 +1,11 @@
-import * as localStorageUtils from '../utils/localStorage';
+import * as localStorageUtils from '../../utils/localStorage';
 
-beforeEach(() =>{
-  localStorage.clear();
+beforeEach(() => {
+    localStorage.clear();
 });
 
-afterEach(() =>{
-  localStorage.clear();
+afterEach(() => {
+    localStorage.clear();
 });
 
 
@@ -22,9 +22,9 @@ it('should get stats from localStorage', () => {
     const getStat = localStorageUtils.getStatFromLocalStorage();
     expect(localStorage.getItem).toHaveBeenCalled();
     expect(getStat.gamesPlayed).toEqual(gamesPlayed);
-  });
+});
 
-  it('should get false value from localStorage', () => {
+it('should get false value from localStorage', () => {
     localStorageUtils.removeStatFromLocalStorage();
     const getStat = localStorageUtils.getStatFromLocalStorage();
     expect(getStat.gamesPlayed).toBe(0);

@@ -42,12 +42,13 @@ class Image extends Component {
     let imgUrl = this.state.images
       .filter(img => img.imgNr === this.state.imgNr)
       .map(img => img.img);
-      let testUrl = this.state.imgArr
-      .filter(img => img === imgUrl.toString())
+      // let testUrl = this.state.imgArr
+      // .filter(img => img === imgUrl.toString())
   
     this.setState({
       // imgUrl: imgUrl.toString()
-      imgUrl: testUrl
+      // imgUrl: process.env.PUBLIC_URL + '/' testUrl
+      imgUrl: process.env.PUBLIC_URL + '/' + imgUrl
       
     });
     this.props.checkBricks(e.target.id, this.state.imgNr);

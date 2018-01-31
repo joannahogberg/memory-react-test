@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header snap 1`] = `
+<header
+  className="flex flex-wrap"
+>
+  <Row>
+    <h1
+      className="text-center font-black"
+    >
+      Memory Game
+    </h1>
+  </Row>
+  <Row>
+    <h4
+      className="text-grey-darker m-2"
+    >
+      You have no saved statics
+    </h4>
+  </Row>
+</header>
+`;

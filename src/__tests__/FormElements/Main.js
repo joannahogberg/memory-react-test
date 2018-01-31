@@ -1,7 +1,7 @@
 import React from 'react';
 import toJSON from 'enzyme-to-json';
 import { shallow, render } from 'enzyme';
-import Main from '../Components/FormElements/Main.js';
+import Main from '../../Components/FormElements/Main.js';
 
 it('Check snapshot for Main', () => {
     const wrapper = render(<Main />);

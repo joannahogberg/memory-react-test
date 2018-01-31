@@ -68,7 +68,7 @@ class Bricks extends Component {
       startTime,
       disabled: true
     },
-    function() {
+    ()=> {
       this.props.disableSelect();
     }
   );
@@ -79,13 +79,12 @@ class Bricks extends Component {
       let bricksArr = this.state.bricksArr;
       bricksArr[id].flipped = true;
       this.setState({ brick1: value, bricksArr });
-    // } else if (this.state.brick1 !== null) {
     } else {
       let bricksArr = this.state.bricksArr;
       bricksArr[id].flipped = true;
       this.setState(
         { brick2: value, bricksArr, turns: this.state.turns + 1 },
-        function() {
+        ()=> {
           this.checkPair();
         }
       );
@@ -109,12 +108,11 @@ class Bricks extends Component {
             pairs: this.state.pairs + 1,
             bricksArr
           },
-          function() {
+          ()=> {
             this.countPoints(this.state.pairs);
           }
         );
       }, 600);
-    // } else if (this.state.brick1 !== this.state.brick2) {
     } else {
       const bricksArr = this.state.bricksArr.map(brick => {
         if (brick.pair === true) {

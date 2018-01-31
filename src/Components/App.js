@@ -37,18 +37,6 @@ class App extends Component {
   }
 
   countStats = (points, start, end) => {
-    const gameTime = end - start;
-    const minutes = Math.floor(gameTime / 60000);
-    const seconds = ((gameTime % 60000) / 1000).toFixed(0);
-    //const time = (seconds === 60 ? (minutes+1) + ":00" : minutes + ":" + seconds);
-    // const time = minutes + ":" + seconds;
-    const time = (Number(seconds) === 60 ? (minutes+1) + ":00" : minutes + ":" + (Number(seconds) < 10 ? "0" : "") + seconds);
-    const userMsg =
-      "your score for this round is " +
-      points +
-      ", and you finished in " +
-      time +
-      " mins";
     let pointsForThisRound;
     if(points < 0 ){
       pointsForThisRound = 0;
@@ -56,6 +44,16 @@ class App extends Component {
     else{
       pointsForThisRound = points;
     }
+    const gameTime = end - start;
+    const minutes = Math.floor(gameTime / 60000);
+    const seconds = ((gameTime % 60000) / 1000).toFixed(0);
+    const time = (Number(seconds) === 60 ? (minutes+1) + ":00" : minutes + ":" + (Number(seconds) < 10 ? "0" : "") + seconds);
+    const userMsg =
+      "your score for this round is " +
+      pointsForThisRound +
+      ", and you finished in " +
+      time +
+      " mins";
     this.setState(
       {
         totalPoints: this.state.totalPoints + pointsForThisRound,
@@ -63,7 +61,7 @@ class App extends Component {
         userMsg,
         disabled: false
       },
-      function() {
+      ()=> {
         saveStatToLocalStorage(this.state.totalPoints, this.state.gamesPlayed);
       }
     );

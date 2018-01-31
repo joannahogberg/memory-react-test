@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Select from '../Components/FormElements/Select.js';
+import Select from '../../Components/FormElements/Select.js';
 
 it('Check class if disabled is set to true', () => {
     const wrapper = shallow(<Select disabled={true}/>);
