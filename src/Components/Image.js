@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import backside from "../Images/backside.png";
 import empty from "../Images/empty.png";
-import imgNumbers from "../utils/imgNumbers.js";
+// import imgNumbers from "../utils/imgNumbers.js";
 import _0 from '../Images/_0.png';
 import _1 from '../Images/_1.png';
 import _2 from '../Images/_2.png';
@@ -28,13 +28,18 @@ class Image extends Component {
     flipped: PropTypes.bool,
     pair: PropTypes.bool,
     checkBricks: PropTypes.func,
-    nrOfBricks: PropTypes.number
+    nrOfBricks: PropTypes.number,
+    imgNumbers: PropTypes.arrayOf(PropTypes.shape({
+      imgNr: PropTypes.number,
+      imgUrl: PropTypes.string
+    })),
   };
 
   state = {
     imgUrl: backside,
     imgNr: this.props.value,
-    images: imgNumbers,
+    // images: imgNumbers,
+    images: this.props.imgNumbers,
     imgArr: [_0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17]
   };
 

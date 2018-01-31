@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Image from "./Image.js";
 import Button from "./FormElements/Button.js";
+import imgNumbers from "../utils/imgNumbers.js";
 
 const buttonStyle = `sbg-transparent 
 hover:bg-green-light 
@@ -38,7 +39,8 @@ class Bricks extends Component {
     points: 0,
     flipped: false,
     turns: 0,
-    disabled: this.props.disabled
+    disabled: this.props.disabled,
+    images: imgNumbers,
   };
 
   onClick = () => {
@@ -157,6 +159,7 @@ class Bricks extends Component {
           pair={brick.pair}
           checkBricks={this.checkBricks}
           nrOfBricks={this.props.nrOfBricks}
+          imgNumbers={this.state.images}
         />
       );
     });
