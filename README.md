@@ -1,6 +1,6 @@
-# memory-react-test &middot; [![Build Status](https://travis-ci.org/joannahogberg/memory-react-test.svg?branch=master)](https://travis-ci.org/joannahogberg/memory-react-test) [![Coverage Status](https://coveralls.io/github/joannahogberg/memory-react-test/badge.svg?branch=master)](https://coveralls.io/github/joannahogberg/memory-react-test?branch=master)
+# memory-react-test &middot; [![Build Status](https://travis-ci.org/joannahogberg/memory-react-test.svg?branch=master)](https://travis-ci.org/joannahogberg/memory-react-test) [![Coverage Status](https://coveralls.io/repos/github/joannahogberg/memory-react-test/badge.svg?branch=master)](https://coveralls.io/github/joannahogberg/memory-react-test?branch=master)
 
->Example app built with [`create-react-app`](https://github.com/facebookincubator/create-react-app) for integration and snapshot testing. The app is a memory game that uses local storage so that the user can collect scores. **CSS-framework is [Tailwind](https://tailwindcss.com/)**
+>Example app built with [`create-react-app`](https://github.com/facebookincubator/create-react-app) for integration and snapshot testing. The app is a memory game that uses `localStorage` so that the user can collect scores. **CSS-framework is [Tailwind](https://tailwindcss.com/)**
 
 The project is set up with all packages to test react components: [**`enzyme`**](http://airbnb.io/enzyme/docs/api/), `enzyme-adapter-react-16`, `react-test-renderer` and `enzyme-to-json` for snapshot testing.
 
