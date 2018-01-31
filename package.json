@@ -25,7 +25,9 @@
     },
     "devDependencies": {
         "coveralls": "^3.0.0",
-        "cypress": "^1.4.1"
+        "cypress": "^1.4.1",
+        "file-loader": "^1.1.6",
+        "url-loader": "^0.6.2"
     },
     "jest": {
         "snapshotSerializers": [

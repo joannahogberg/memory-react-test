@@ -28,7 +28,8 @@ class Image extends Component {
       .map(img => img.imgNr);
   
     this.setState({
-      imgUrl: require('../Images/_'+ imgUrl +'.png')
+       imgUrl: require('../Images/_'+ imgUrl +'.png')
+    
       
     });
     this.props.checkBricks(e.target.id, this.state.imgNr);
