@@ -39,16 +39,20 @@ class Image extends Component {
   };
 
   onClick = e => {
-    let imgUrl = this.state.images
+    // let imgUrl = this.state.images
+    //   .filter(img => img.imgNr === this.state.imgNr)
+    //   .map(img => img.img);
+      let imgUrl = this.state.images
       .filter(img => img.imgNr === this.state.imgNr)
-      .map(img => img.img);
+      .map(img => img.imgNr);
       // let testUrl = this.state.imgArr
       // .filter(img => img === imgUrl.toString())
   
     this.setState({
       // imgUrl: imgUrl.toString()
       // imgUrl: process.env.PUBLIC_URL + '/' testUrl
-      imgUrl: process.env.PUBLIC_URL + '/' + imgUrl
+      //imgUrl: process.env.PUBLIC_URL + '/' + imgUrl
+      imgUrl: process.env.PUBLIC_URL + '/_' + imgUrl + '.png'
       
     });
     this.props.checkBricks(e.target.id, this.state.imgNr);
