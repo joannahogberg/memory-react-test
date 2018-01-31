@@ -52,7 +52,7 @@ class Image extends Component {
       // imgUrl: imgUrl.toString()
       // imgUrl: process.env.PUBLIC_URL + '/' testUrl
       //imgUrl: process.env.PUBLIC_URL + '/' + imgUrl
-      imgUrl: process.env.PUBLIC_URL + '/_' + imgUrl + '.png'
+      imgUrl: process.env.PUBLIC_URL + '_' + imgUrl + '.png'
       
     });
     this.props.checkBricks(e.target.id, this.state.imgNr);
