@@ -25,10 +25,11 @@ class Image extends Component {
   onClick = e => {
       let imgUrl = this.state.images
       .filter(img => img.imgNr === this.state.imgNr)
-      .map(img => img.imgNr);
-  
+      .map(img => img.img);
+  console.log(imgUrl.toString())
     this.setState({
-       imgUrl: require('../Images/_'+ imgUrl +'.png')
+      //  imgUrl: require('../Images/_'+ imgUrl +'.png')
+      imgUrl: imgUrl.toString()
     
       
     });
