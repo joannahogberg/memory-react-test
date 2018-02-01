@@ -55,7 +55,7 @@ describe("Test onClick for element", () => {
 
 it("If pair is true set img src to empty.png and className to be brickFront", () => {
   const wrapper = shallow(<Image pair={true} flipped={true} />);
-  //expect(wrapper.props().src).toBe("empty.png");
+  expect(wrapper.props().src).toBe("empty.png");
   expect(wrapper.props().className).toContain("pointer-events-none");
 });
 

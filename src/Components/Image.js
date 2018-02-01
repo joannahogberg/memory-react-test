@@ -26,7 +26,6 @@ class Image extends Component {
       let imgUrl = this.state.images
       .filter(img => img.imgNr === this.state.imgNr)
       .map(img => img.img);
-  console.log(imgUrl.toString())
     this.setState({
       imgUrl: imgUrl.toString()  
     });
@@ -43,9 +42,7 @@ class Image extends Component {
     
     return (
       <img
-        //src={!this.props.flipped ? backside : imgUrl}
-        //src={!this.props.flipped ? backside : imgUrl}
-      style={!this.props.flipped ? {backgroundImage: "url(" + backside + ")", backgroundSize: width, height: "100%"} : {backgroundImage: "url(" + imgUrl + ")", backgroundSize: width, height: "100%"}}
+        src={!this.props.flipped ? backside : imgUrl}
         className={
           this.props.pair ? "pointer-events-none p-px " + width : className
         }

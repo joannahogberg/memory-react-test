@@ -30,7 +30,7 @@ describe("Render image tags when button is being clicked and check if state is b
     expect(spy).toHaveBeenCalledWith(wrapper.state().bricksArr);
   });
 
-  it.skip("Check rendered img tags", () => {
+  it("Check rendered img tags", () => {
     const imgTags = wrapper.find("img");
     expect(imgTags.first().props()).toEqual(
       expect.objectContaining({
