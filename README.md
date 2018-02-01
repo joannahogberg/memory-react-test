@@ -4,6 +4,9 @@
 
 The project is set up with all packages to test react components: [**`enzyme`**](http://airbnb.io/enzyme/docs/api/), `enzyme-adapter-react-16`, `react-test-renderer` and `enzyme-to-json` for snapshot testing.
 
+## Play memory 
+[`MEMORY REACT TEST`](https://joannahogberg.github.io/memory-react-test/)
+
 
 ## CI-server
 
