@@ -39,7 +39,7 @@ describe("Test onClick for element", () => {
     );
     expect(wrapper.props().src).toBe("backside.png");
     wrapper.simulate("click", { target: { id: 6 } });
-    expect(wrapper.props().src).toContain("_6.png");
+    expect(wrapper.props().src).toContain("img6.png");
   });
 
   it("Test if right class is being added depending of nrOfBricks value", () => {
