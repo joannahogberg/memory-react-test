@@ -28,10 +28,7 @@ class Image extends Component {
       .map(img => img.img);
   console.log(imgUrl.toString())
     this.setState({
-      //  imgUrl: require('../Images/_'+ imgUrl +'.png')
-      imgUrl: imgUrl.toString()
-    
-      
+      imgUrl: imgUrl.toString()  
     });
     this.props.checkBricks(e.target.id, this.state.imgNr);
   };
@@ -43,14 +40,16 @@ class Image extends Component {
     const className = this.props.flipped
       ? "pointer-events-none p-px " + width
       : "pointer-events-auto p-px " + width;
-
+    
     return (
       <img
-        src={!this.props.flipped ? backside : imgUrl}
+        //src={!this.props.flipped ? backside : imgUrl}
+        //src={!this.props.flipped ? backside : imgUrl}
+      style={!this.props.flipped ? {backgroundImage: "url(" + backside + ")", backgroundSize: width, height: "100%"} : {backgroundImage: "url(" + imgUrl + ")", backgroundSize: width, height: "100%"}}
         className={
           this.props.pair ? "pointer-events-none p-px " + width : className
         }
-        alt="backside"
+        alt=""
         id={this.props.id}
         onClick={this.onClick}
       />
