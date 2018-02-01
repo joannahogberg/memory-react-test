@@ -18,7 +18,10 @@ describe("My First Test", function() {
     })
     it("Check click of brick to see if class gets updated", function() {
         cy.get('select').select('4x4')
-        cy.get('button').click()
+            .wait(1000)
+        cy.get('button')
+            .wait(2000)
+            .click()
             .should('have.class', 'pointer-events-none')
         cy.get('select')
             .should('have.class', 'pointer-events-none')
@@ -39,6 +42,7 @@ describe("My First Test", function() {
 
         cy.get('div').last()
             .children().last()
+            .wait(3000)
             .click()
             .not('src', 'backside.png')
             .should('have.class', 'pointer-events-none')
